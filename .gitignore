@@ -19,3 +19,6 @@
 /src/.umi-production
 /src/.umi-test
 /.env.local
+
+# package
+release
