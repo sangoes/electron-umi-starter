@@ -1,4 +1,4 @@
-# umi project
+# electron umi starter project
 
 ## Getting Started
 

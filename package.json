@@ -1,12 +1,13 @@
 {
+  "name": "electron-umi-starter",
+  "version": "1.0.0",
   "private": true,
+  "description": "electron umi project",
   "scripts": {
-    "start": "umi dev",
-    "build": "umi build",
-    "postinstall": "umi generate tmp",
-    "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
-    "test": "umi-test",
-    "test:coverage": "umi-test --coverage"
+    "start": "concurrently \"yarn start:main\" \"yarn start:renderer\"",
+    "start:main": "electron-webpack dev",
+    "start:renderer": "umi dev",
+    "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
@@ -21,13 +22,61 @@
   },
   "dependencies": {
     "@ant-design/pro-layout": "^5.0.12",
-    "@umijs/preset-react": "1.x",
-    "@umijs/test": "^3.2.10",
-    "lint-staged": "^10.0.7",
-    "prettier": "^1.19.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "umi": "^3.2.10",
     "yorkie": "^2.0.0"
-  }
+  },
+  "devDependencies": {
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+    "@types/node": "12",
+    "@umijs/preset-react": "^1.5.19",
+    "@umijs/test": "^3.2.10",
+    "awesome-typescript-loader": "^5.2.1",
+    "concurrently": "^5.2.0",
+    "cross-env": "^7.0.2",
+    "electron": "^9.1.1",
+    "electron-builder": "^22.7.0",
+    "electron-debug": "^3.1.0",
+    "electron-webpack": "^2.8.2",
+    "electron-webpack-ts": "^4.0.1",
+    "lint-staged": "^10.2.11",
+    "prettier": "^2.0.5",
+    "ts-loader": "^8.0.1",
+    "typescript": "^3.9.7",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-merge": "^5.0.9"
+  },
+  "electronWebpack": {
+    "main": {
+      "sourceDirectory": "src/main"
+    },
+    "renderer": {
+      "sourceDirectory": null
+    }
+  },
+  "author": {
+    "name": "jerry.c",
+    "email": "jerrychir@163.com",
+    "url": "https://github.com/sangoes/electron-umi-starter"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:sangoes/electron-umi-starter.git"
+  },
+  "license": "MIT",
+  "keywords": [
+    "electron",
+    "boilerplate",
+    "react",
+    "redux",
+    "typescript",
+    "ts",
+    "sass",
+    "webpack",
+    "hot",
+    "reload"
+  ]
 }
